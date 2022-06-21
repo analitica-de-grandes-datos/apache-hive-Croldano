@@ -12,16 +12,14 @@ Apache Hive se ejecutará en modo local (sin HDFS).
 Escriba el resultado a la carpeta `output` de directorio de trabajo.
 
         >>> Escriba su respuesta a partir de este punto <<<
-DROP TABLE IF EXISTS t1;
+DROP TABLE IF EXISTS datos;
 
-CREATE TABLE t1 (letter STRING,
-                 fecha DATE,
-                 number int)
+CREATE TABLE datos (letra STRING, fecha DATE, numero INT)
 ROW FORMAT DELIMITED
 FIELDS TERMINATED BY '\t';
 
-LOAD DATA LOCAL INPATH 'data.tsv' OVERWRITE INTO TABLE t1 ;
+LOAD DATA LOCAL INPATH "data.tsv" OVERWRITE INTO TABLE datos;
 
-INSERT OVERWRITE local directory 'output'
+INSERT OVERWRITE DIRECTORY 'output'
 ROW FORMAT DELIMITED FIELDS TERMINATED BY ','
-SELECT letter,count(*) FROM t1 GROUP BY letter;
+SELECT letra, COUNT(*) FROM datos GROUP BY letra ORDER BY letra;
