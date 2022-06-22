@@ -31,6 +31,7 @@ LOAD DATA LOCAL INPATH 'data.tsv' INTO TABLE t0;
 /*
     >>> Escriba su respuesta a partir de este punto <<<
 */
+
 DROP TABLE IF EXISTS t0;
 CREATE TABLE t0 (
     c1 STRING,
